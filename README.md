@@ -43,6 +43,7 @@ tambahkan kode ini pada file login.dart dan register.dart, dalam register() dan 
 tambahkan kode ini pada file login.dart dan register.dart.
 
 tambahkan state
+
 ![state](media/state.png)
 
 ganti TextField
