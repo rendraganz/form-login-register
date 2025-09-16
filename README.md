@@ -61,6 +61,7 @@ Pada register.dart
 - Menyimpan sesi login.
 
 - Menambah dependensi di pubspec
+
 ![dependensi](media/dependensi_pub.png)
 
 - Di login.dart impor prefs
@@ -70,7 +71,7 @@ lalu, tambah kode berikut
 ![login](media/sesiLogin_login_2.png)
 ![login](media/sesiLogin_login_3.png)
 
--Di main.dart, cek saat pertama kali app dijalankan
+- Di main.dart, cek saat pertama kali app dijalankan
 ![login](media/sesiLogin_main.png)
 
 ![login](media/sesiLogin_main_2.png)
