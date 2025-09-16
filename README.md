@@ -40,7 +40,7 @@
 
 2. Tampilkan/Sembunyikan Password: Tambahkan ikon mata pada TextField password yang bisa ditekan untuk menampilkan atau menyembunyikan teks password.
 
-tambahkan kode ini pada file login.dart dan register.dart.
+- tambahkan kode ini pada file login.dart dan register.dart.
 
 - tambahkan state
 
