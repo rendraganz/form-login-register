@@ -47,7 +47,8 @@
     ![state](media/state.png)
 
 - ganti TextField
-![hide_pw](media/hide_password.png)
+
+    ![hide_pw](media/hide_password.png)
 
 3. Animasi Sederhana: Tambahkan Hero widget pada ikon di halaman login dan registrasi agar ada transisi animasi yang halus.
 
