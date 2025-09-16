@@ -54,9 +54,11 @@ ganti TextField
 Tempatkan di login_page.dart & register_page.dart pada Icon()
 
 Pada login.dart
+
 ![hero_widget](media/hero_login.png)
 
 Pada register.dart
+
 ![hero_widget](media/hero_register.png)
 
 - Menyimpan sesi login.
@@ -66,9 +68,11 @@ Pada register.dart
 ![dependensi](media/dependensi_pub.png)
 
 - Di login.dart impor prefs
+
 ![login](media/sesiLogin_login.png)
 
 lalu, tambah kode berikut
+
 ![login](media/sesiLogin_login_2.png)
 ![login](media/sesiLogin_login_3.png)
 
@@ -85,13 +89,13 @@ lalu, tambah kode berikut
 ## Hasil akhir
 
 - Halaman Register dengan  Validasi input
-Password terlihat
+- Password terlihat
 ![validasi dan hide pw](media/register_tampil.png)
 
-Password sembunyi
+- Password sembunyi
 ![validasi dan hide pw](media/register_tutup.png)
 
-Validasi ketika password kurang
+- Validasi ketika password kurang
 ![validasi dan hide pw](media/register_kurang.png)
 
 - Halaman Login
