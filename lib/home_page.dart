@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_register_form/login_page.dart';
+import 'package:shared_preferences/shared_preferences.dart'; // sesi login
 
 class HomePage extends StatelessWidget{
   final String fullName;
@@ -15,7 +16,10 @@ class HomePage extends StatelessWidget{
         actions: [
           IconButton(
             icon: Icon(Icons.logout),
-            onPressed: () {
+            onPressed: () async {
+              // logout
+              final prefs = await SharedPreferences.getInstance();
+              await prefs.clear(); 
               Navigator.pushAndRemoveUntil(
                 context,
                 MaterialPageRoute(builder: (context) => LoginPage()),
@@ -56,7 +60,7 @@ class HomePage extends StatelessWidget{
                     color: Colors.blue.shade800,
                   ),
                   textAlign: TextAlign.center,
-              )
+              ),
             ],
           ),
         ),

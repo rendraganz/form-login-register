@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:login_register_form/register_page.dart';
 import 'package:login_register_form/home_page.dart';
 import 'package:login_register_form/data/user_data.dart';
+import 'package:shared_preferences/shared_preferences.dart'; // sesi login
 
 class LoginPage extends StatefulWidget{
   const LoginPage({super.key});
@@ -14,11 +15,54 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  // toggle password
+  bool _obscurePassword = true;
+
+  // sesi login
+  void _saveLoginSession(String email) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isLoggedIn', true);
+    await prefs.setString('email', email);
+  }
+
   void _login() {
     String email = _emailController.text;
     String password = _passwordController.text;
 
+        // validasi Input
+    if (!email.contains('@')) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Email tidak valid"),
+          content: Text("Pastikan email mengandung '@',"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text("OK"))],
+        ),
+      );
+      return;
+    }
+
+    if (password.length < 8) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Password terlalu pendek"),
+          content: Text("Password minimal 8 karakter."),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+               child: Text("OK")),
+          ],
+        ),
+      );
+      return;
+    }
+
     if (userData.containsKey(email) && userData[email]!['password'] == password) {
+      _saveLoginSession(email); // panggil setelah login berhasil
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -64,7 +108,11 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Icon(Icons.lock_person, size: 80, color: Colors.white),
+                // Hero widget 
+                Hero(
+                  tag: 'app-icon',
+                   child: Icon(Icons.lock_person, size: 80, color: Colors.white),
+                   ),
                 SizedBox(height: 20),
                 Text(
                   'Welcome Back',
@@ -91,17 +139,25 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(height: 20),
-                TextField(
+                TextField( // rubah TextField untuk menampilkan/menyembunyikan password
                   controller: _passwordController,
-                  obscureText: true,
+                  obscureText: _obscurePassword,
                   decoration: InputDecoration(
                     hintText: 'Password',
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.9),
                     prefixIcon: Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                      icon: Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide.none,
+                      borderSide: BorderSide.none
                     ),
                   ),
                 ),

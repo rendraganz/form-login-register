@@ -13,15 +13,50 @@ class _RegisterPageState extends State<RegisterPage> {
   final _fullNameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  
+  // toggle password
+  bool _obscurePassword = true;
 
   void _register() {
     String fullName = _fullNameController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
 
+    // validasi Input
+    if (!email.contains('@')) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Email tidak valid"),
+          content: Text("Pastikan email mengandung '@',"),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text("OK"))],
+        ),
+      );
+      return;
+    }
+
+    if (password.length < 8) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Password terlalu pendek"),
+          content: Text("Password minimal 8 karakter."),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+               child: Text("OK")),
+          ],
+        ),
+      );
+      return;
+    }
+
     if (fullName.isNotEmpty && email.isNotEmpty && password.isNotEmpty) {
       userData[email] = {
-        'fullname': fullName,
+        'fullName': fullName,
         'password': password,
       };
 
@@ -75,8 +110,11 @@ class _RegisterPageState extends State<RegisterPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Icon(Icons.person_add_alt_1, size: 80, color: Colors.white,),
-
+                // Hero widget 
+                Hero(
+                  tag: 'app-icon',
+                   child: Icon(Icons.person_add_alt_1, size: 80, color: Colors.white),
+                   ),
                 SizedBox(height: 20),
                 Text(
                   'Create Account',
@@ -117,14 +155,22 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ),
                 SizedBox(height: 20),
-                TextField(
+                TextField( // rubah TextField untuk menampilkan/menyembunyikan password
                   controller: _passwordController,
-                  obscureText: true,
+                  obscureText: _obscurePassword,
                   decoration: InputDecoration(
                     hintText: 'Password',
                     filled: true,
                     fillColor: Colors.white.withOpacity(0.9),
                     prefixIcon: Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                      icon: Icon(_obscurePassword ? Icons.visibility : Icons.visibility_off),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: BorderSide.none
