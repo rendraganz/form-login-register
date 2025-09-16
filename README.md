@@ -44,10 +44,9 @@
 
 - tambahkan state
 
-![state](media/state.png)
+    ![state](media/state.png)
 
 - ganti TextField
-
 ![hide_pw](media/hide_password.png)
 
 3. Animasi Sederhana: Tambahkan Hero widget pada ikon di halaman login dan registrasi agar ada transisi animasi yang halus.
@@ -55,31 +54,27 @@
 - Tempatkan di login_page.dart & register_page.dart pada Icon();
 
 - Pada login.dart
-
 ![hero_widget](media/hero_login.png)
 
 - Pada register.dart
-
 ![hero_widget](media/hero_register.png)
 
 4.  Simpan Sesi Login: Coba gunakan package shared_preferences untuk menyimpan status login. Jadi, saat aplikasi ditutup dan dibuka lagi, pengguna tidak perlu login ulang jika sesinya masih aktif.
 
 - Menambah dependensi di pubspec
 
-![dependensi](media/dependensi_pub.png)
+    ![dependensi](media/dependensi_pub.png)
 
 - Di login.dart impor prefs
 
-![login](media/sesiLogin_login.png)
+    ![login](media/sesiLogin_login.png)
 
 - lalu, tambah kode berikut
-
 ![login](media/sesiLogin_login_2.png)
 ![login](media/sesiLogin_login_3.png)
 
 - Di main.dart, cek saat pertama kali app dijalankan
 ![login](media/sesiLogin_main.png)
-
 ![login](media/sesiLogin_main_2.png)
 
 - Di home_page.dart, tambahkan logout agar sesi dihapus:
