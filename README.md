@@ -33,35 +33,36 @@
 ![home](media/page_home.png)
 
 ## Latihan Tambahan
-- Menambahkan validasi input untuk memastikan format email benar mengandung "@" dan minimal password 8 karakter.
+1. Validasi Input: Tambahkan validasi yang lebih baik. Misalnya, cek apakah email memiliki format yang benar (mengandung ’@’) atau password memiliki panjang minimal 8 karakter.
 
-tambahkan kode ini pada file login.dart dan register.dart, dalam register() dan login().
+- tambahkan kode ini pada file login.dart dan register.dart, dalam register() dan login().
 ![validasi input](media/validasi_input.png)
 
-- Menambah ikon mata agar bisa menampilkan/menyembunyikan password.
+2. Tampilkan/Sembunyikan Password: Tambahkan ikon mata pada TextField password yang bisa ditekan untuk menampilkan atau menyembunyikan teks password.
 
 tambahkan kode ini pada file login.dart dan register.dart.
 
-tambahkan state
+- tambahkan state
 
 ![state](media/state.png)
 
-ganti TextField
+- ganti TextField
 
 ![hide_pw](media/hide_password.png)
 
-- Menambah Hero Widget.
-Tempatkan di login_page.dart & register_page.dart pada Icon()
+3. Animasi Sederhana: Tambahkan Hero widget pada ikon di halaman login dan registrasi agar ada transisi animasi yang halus.
 
-Pada login.dart
+- Tempatkan di login_page.dart & register_page.dart pada Icon();
+
+- Pada login.dart
 
 ![hero_widget](media/hero_login.png)
 
-Pada register.dart
+- Pada register.dart
 
 ![hero_widget](media/hero_register.png)
 
-- Menyimpan sesi login.
+4.  Simpan Sesi Login: Coba gunakan package shared_preferences untuk menyimpan status login. Jadi, saat aplikasi ditutup dan dibuka lagi, pengguna tidak perlu login ulang jika sesinya masih aktif.
 
 - Menambah dependensi di pubspec
 
@@ -71,7 +72,7 @@ Pada register.dart
 
 ![login](media/sesiLogin_login.png)
 
-lalu, tambah kode berikut
+- lalu, tambah kode berikut
 
 ![login](media/sesiLogin_login_2.png)
 ![login](media/sesiLogin_login_3.png)
